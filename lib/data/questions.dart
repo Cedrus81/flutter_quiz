@@ -91,17 +91,17 @@ const questions = [
   QuizQuestion(
     'In Dart, which method is automatically called when an instance of a class is created?',
     [
+      'constructor()',
       'onCreate()',
       'init()',
-      'constructor()',
       'QuizQuestion()',
     ],
   ),
   QuizQuestion(
     'What data structure does Dart provide to group related items?',
     [
-      'Array',
       'List',
+      'Array',
       'Class',
       'Structure',
     ],
@@ -136,10 +136,10 @@ const questions = [
   QuizQuestion(
     'What is the correct way to import a library in Dart?',
     [
+      'import "library.dart";',
       'import library',
       '#import',
       'using',
-      'import "library.dart";',
     ],
   ),
   QuizQuestion(
