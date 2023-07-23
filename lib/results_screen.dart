@@ -41,12 +41,21 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                'You have answered $numCorrectQuestions out of ${questions.length} questions correctly!'),
+              textAlign: TextAlign.center,
+              'You have answered $numCorrectQuestions out of ${questions.length} questions correctly!',
+              style: const TextStyle(fontSize: 26, color: Colors.white),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              'let\'s review your answers:',
+              style: TextStyle(fontSize: 22, color: Colors.white),
+            ),
             const SizedBox(
               height: 30,
             ),
             QuestionsSummary(summaryData: summaryData),
-            const Text('let\'s review your answers:'),
             TextButton(
                 onPressed: onResetQuiz, child: const Text('restart quiz'))
           ],
