@@ -7,7 +7,6 @@ class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key, required this.onChooseAnswer});
 
   final void Function(String ans) onChooseAnswer;
-
   @override
   State<QuestionsScreen> createState() {
     return _QuestionsScreenState();

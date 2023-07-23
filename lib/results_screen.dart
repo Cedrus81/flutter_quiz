@@ -6,13 +6,16 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
+    required this.onResetQuiz,
   });
+
   final List<String> chosenAnswers;
+  final VoidCallback onResetQuiz;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
-    for (var i = 0; i < chosenAnswers.length; i++) {
+    for (int i = 0; i < chosenAnswers.length; i++) {
       summary.add(
         {
           'idx': i,
@@ -44,7 +47,8 @@ class ResultsScreen extends StatelessWidget {
             ),
             QuestionsSummary(summaryData: summaryData),
             const Text('let\'s review your answers:'),
-            TextButton(onPressed: () {}, child: const Text('restart quiz'))
+            TextButton(
+                onPressed: onResetQuiz, child: const Text('restart quiz'))
           ],
         ),
       ),

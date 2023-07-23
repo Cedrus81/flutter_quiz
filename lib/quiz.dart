@@ -22,31 +22,36 @@ class _QuizState extends State<Quiz> {
     super.initState();
   }
 
-  void switchScreen() {
+  void switchScreen(String newScreen) {
     setState(() {
-      activeScreen = 'questions-screen';
+      activeScreen = newScreen;
+      if (newScreen == 'questions-screen' || newScreen == 'start-screen') {
+        selectedAnswers = [];
+      }
     });
   }
 
   void chooseAnswer(String ans) {
-    // setState(() {
-    selectedAnswers.add(ans);
-    if (questions.length <= selectedAnswers.length) {
-      setState(() {
-        activeScreen = 'results-screen';
-      });
-    }
-    // });
+    setState(() {
+      selectedAnswers.add(ans);
+      if (questions.length <= selectedAnswers.length) {
+        setState(() {
+          activeScreen = 'results-screen';
+        });
+      }
+    });
   }
 
   Widget setScreen(String screenType) {
     switch (screenType) {
       case 'start-screen':
-        return StartScreen(switchScreen);
+        return StartScreen(() => switchScreen('questions-screen'));
       case 'questions-screen':
         return QuestionsScreen(onChooseAnswer: chooseAnswer);
       case 'results-screen':
-        return ResultsScreen(chosenAnswers: selectedAnswers);
+        return ResultsScreen(
+            chosenAnswers: selectedAnswers,
+            onResetQuiz: () => switchScreen('start-screen'));
       default:
         return Container(); // Return an empty container if the screenType doesn't match any of the cases.
     }
